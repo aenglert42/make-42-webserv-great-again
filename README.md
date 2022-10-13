@@ -43,4 +43,11 @@ with 'jsiller' being replaced by your username
 
 ### install siege
 
-### install xcode
+brew install siege
+
+If you get _"Error: Xcode alone is not sufficient on Catalina."_ install the xcode Command Line Tools with ```xcode-select --install```. This will open the following installation window:
+
+<img width="453" alt="screenshot" src="https://user-images.githubusercontent.com/80413516/195597554-70cfcfbd-858b-4394-8c5f-7a210feec5ff.png">
+
+Click on install -> aggree -> done and then use ```brew install siege``` again.
+
