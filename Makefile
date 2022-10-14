@@ -26,17 +26,24 @@ NC := \033[0m
 
 all: $(NAME)
 
+show:
+	@echo SOURCES: $(SRCS)
+	@echo OBJECTS: $(OBJS)
+
 $(NAME): $(OBJS) $(DEPS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINK) -o $@
 	@echo "\n$(GREEN)$(NAME) created$(NC)"
 	@echo "$(YELLOW)SUCCESFULLY COMPILED!$(NC)"
 
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(DEPS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 $(OBJ_DIR)%.o: %.cpp $(DEPS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
-	@echo "$(RED)$(NAME)-object-files deleted$(NC)"
+	rm -f $(OBJS)
+	@echo "$(RED)$(NAME) object files deleted$(NC)"
 
 fclean: clean
 	rm -f $(NAME)
