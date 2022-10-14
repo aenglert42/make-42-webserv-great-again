@@ -1,74 +1,74 @@
-# # Ignore all
-# *
+# Ignore all
+*
 
-# # Unignore all with extensions
-# !*.*
+# Unignore all with extensions
+!*.*
 
-# # Unignore all dirs
-# !*/
+# Unignore all dirs
+!*/
 
-# # Unignore Makefile
-# !Makefile
+# Unignore Makefile
+!Makefile
 
-# # Prerequisites
-# *.d
+# Prerequisites
+*.d
 
-# # Object files
-# *.o
-# *.ko
-# *.obj
-# *.elf
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
 
-# # Linker output
-# *.ilk
-# *.map
-# *.exp
+# Linker output
+*.ilk
+*.map
+*.exp
 
-# # Precompiled Headers
-# *.gch
-# *.pch
+# Precompiled Headers
+*.gch
+*.pch
 
-# # Libraries
-# *.lib
-# *.a
-# *.la
-# *.lo
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
 
-# # Shared objects (inc. Windows DLLs)
-# *.dll
-# *.so
-# *.so.*
-# *.dylib
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
 
-# # Executables
-# *.exe
-# *.out
-# *.app
-# *.i*86
-# *.x86_64
-# *.hex
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
 
-# # Debug files
-# *.dSYM/
-# *.DS_Store
-# *.su
-# *.idb
-# *.pdb
+# Debug files
+*.dSYM/
+*.DS_Store
+*.su
+*.idb
+*.pdb
 
-# # Kernel Module Compile Results
-# *.mod*
-# *.cmd
-# .tmp_versions/
-# modules.order
-# Module.symvers
-# Mkfile.old
-# dkms.conf
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
 
-# # Visual Studio Code Debug Files
-# .vscode
+# Visual Studio Code Debug Files
+.vscode
 
-# # ignore .log
-# *.log
+# ignore .log
+*.log
 
-# # ignore testing directories
+# ignore testing directories
 # *testing_only*
