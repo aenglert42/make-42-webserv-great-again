@@ -8,7 +8,7 @@ SRCS :=	$(wildcard $(SRC_DIR)*.cpp) \
 		delete.cpp \
 		custom.cpp \
 		hosts.cpp
-OBJS := $(patsubst %.c,$(OBJ_DIR)%.o,$(SRCS))
+OBJS = $(patsubst $(OBJ_DIR)$(SRC_DIR)%.o,$(OBJ_DIR)%.o,$(patsubst %.cpp,$(OBJ_DIR)%.o,$(SRCS)))
 HEADERS = $(wildcard $(HEADER_DIR)*.h)
 PLATFORM := $(shell uname -s)
 CC := c++
@@ -27,22 +27,19 @@ NC := \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJS) $(DEPS)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINK) -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINK) -o $@
 	@echo "\n$(GREEN)$(NAME) created$(NC)"
 	@echo "$(YELLOW)SUCCESFULLY COMPILED!$(NC)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(DEPS) ofilemessage
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo ".\c"
-
-ofilemessage:
-	@echo "compiling $(NAME)-object-files: \c"
+$(OBJ_DIR)%.o: %.cpp $(DEPS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
+	rm -rf $(OBJS)
 	@echo "$(RED)$(NAME)-object-files deleted$(NC)"
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 	@echo "$(RED)$(NAME) deleted$(NC)"
 
 re: fclean all
@@ -63,6 +60,4 @@ peace:
 	@echo "       |      |"
 	@echo "       |      |\n"
 
-.INTERMEDIATE: ofilemessage
-
-.PHONY: clean fclean all re
+.PHONY: all clean fclean re peace
