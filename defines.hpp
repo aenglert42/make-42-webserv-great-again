@@ -12,4 +12,6 @@
 #define UNDERLINED "\033[4m"
 #define FILE_LINE (std::string(__FILE__) + std::string(":") + std::to_string(__LINE__))
 
+#define LOG(x) (std::cout << __FILE__ << ":" << __LINE__ << " " << x << std::endl)
+
 #endif
