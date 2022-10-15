@@ -24,11 +24,8 @@ int main(void)
 {
 	g_ko_counter = 0;
 	print_welcome();
-	// create directories
-	// create files
-	// create apply permissions
-	give_instructions();
 	create_infrastructure();
+	give_instructions();
 	add_hosts();
 	create_curl_host_list();
 	print_custom();
@@ -40,9 +37,7 @@ int main(void)
 	print_DELETE();
 	run_DELETE_tests();
 	print_summary();
-	// reset permissions
-	// delete files
-	// delete directories
+	clear_infrastructure();
 	return 0;
 }
 

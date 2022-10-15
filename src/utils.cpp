@@ -17,7 +17,7 @@ void evaluate_test(const std::string& testcase, const std::string& response, con
 {
 	static int i = 1;
 
-	std::cout << YELLOW << "Test " << i << ": " << testcase << BLUE << "\tfrom: " << testLocation << RESET << std::endl;
+	std::cout << YELLOW << "Test " << i << ": " << testcase << RESET << " located in: " << BLUE << testLocation << RESET << std::endl;
 	if (response.compare(expected) == 0)
 		std::cout << GREEN << "OK" << RESET << std::endl;
 	else if (no_throw_stol(expected) == statuscode && statuscode > 99 && statuscode < 600)
