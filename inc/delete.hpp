@@ -6,7 +6,7 @@
 #include "defines.hpp"
 #include "curl_requests.hpp"
 
-#define DELETE_REQUEST(REQUEST, RESPONSE) DELETE_request(#REQUEST, #RESPONSE, FILE_LINE)
+#define DELETE_TEST(REQUEST, RESPONSE) DELETE_test(#REQUEST, #RESPONSE, FILE_LINE)
 
 void run_DELETE_tests(void);
 

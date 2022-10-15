@@ -19,7 +19,7 @@ int main(void)
 	// create files
 	// create apply permissions
 	add_hosts();
-	add_hosts_to_curl();
+	create_curl_host_list();
 	print_custom();
 	run_custom_tests();
 	print_GET();

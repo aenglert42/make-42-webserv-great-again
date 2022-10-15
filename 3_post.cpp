@@ -2,6 +2,6 @@
 
 void run_POST_tests(void)
 {
-	// Usage: POST_REQUEST("url", "expected resonse body or status code");
-	POST_REQUEST("http://webserv/uploads/new.txt", "201");
+	// Usage: POST_TEST("url", "expected resonse body or status code");
+	POST_TEST("http://webserv/uploads/new.txt", "201");
 }

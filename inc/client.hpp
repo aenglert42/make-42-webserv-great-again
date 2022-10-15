@@ -20,6 +20,6 @@
 
 extern uint16_t g_port_for_custom_requests;
 
-void custom_request(const std::string&, const std::string&, const std::string&);
+void custom_test(const std::string&, const std::string&, const std::string&);
 
 #endif

@@ -1,6 +1,6 @@
 #include "utils.hpp"
 
-static long nothrow_stol(const std::string& string)
+static long no_throw_stol(const std::string& string)
 {
 	long ret;
 	try {
@@ -13,14 +13,14 @@ static long nothrow_stol(const std::string& string)
 	return (ret);
 }
 
-void evaluation(const std::string& testcase, const std::string& response, const std::string& expected, long statuscode, const std::string& testLocation)
+void evaluate_test(const std::string& testcase, const std::string& response, const std::string& expected, long statuscode, const std::string& testLocation)
 {
 	static int i = 1;
 
 	std::cout << YELLOW << "Test " << i << ": " << testcase << BLUE << "\tfrom: " << testLocation << RESET << std::endl;
 	if (response.compare(expected) == 0)
 		std::cout << GREEN << "OK" << RESET << std::endl;
-	else if (nothrow_stol(expected) == statuscode && statuscode > 99 && statuscode < 600)
+	else if (no_throw_stol(expected) == statuscode && statuscode > 99 && statuscode < 600)
 		std::cout << GREEN << "OK" << RESET << " status code: " << statuscode << std::endl;
 	else if (response.find(expected) != std::string::npos)
 		std::cout << GREEN << "OK" << RESET << " found: " << expected << std::endl;

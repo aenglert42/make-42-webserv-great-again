@@ -9,6 +9,7 @@
 #include "defines.hpp"
 
 void add_hosts(void);
+
 void add_host(const std::string&, const std::string&);
 
 #endif

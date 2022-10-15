@@ -28,7 +28,7 @@ static void setup_delete(CURL *curl, std::string *response, const std::string& u
 	curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "DELETE");
 }
 
-static void curl_template(const std::string& url, const std::string& expected, const std::string& testLocation, void (*setup_curl)(CURL*, std::string*, const std::string&))
+static void curl_request_test_template(const std::string& url, const std::string& expected, const std::string& testLocation, void (*setup_curl)(CURL*, std::string*, const std::string&))
 {
 	long statuscode = 0;
 	CURL *curl= curl_easy_init();
@@ -45,29 +45,29 @@ static void curl_template(const std::string& url, const std::string& expected, c
 			response = "Error: ";
 			response += curl_easy_strerror(res);
 		}
-		evaluation(url.substr(1, url.length() - 2), response, expected.substr(1, expected.length() - 2), statuscode, testLocation);
+		evaluate_test(url.substr(1, url.length() - 2), response, expected.substr(1, expected.length() - 2), statuscode, testLocation);
 		curl_easy_cleanup(curl);
 	}
 	else
 		std::cout << RED << "Error: curl_easy_init failed" << RESET << std::endl;
 }
 
-void GET_request(const std::string& url, const std::string& expected, const std::string& testLocation)
+void GET_test(const std::string& url, const std::string& expected, const std::string& testLocation)
 {
-	curl_template(url, expected, testLocation, setup_get);
+	curl_request_test_template(url, expected, testLocation, setup_get);
 }
 
-void POST_request(const std::string& url, const std::string& expected, const std::string& testLocation)
+void POST_test(const std::string& url, const std::string& expected, const std::string& testLocation)
 {
-	curl_template(url, expected, testLocation, setup_post);
+	curl_request_test_template(url, expected, testLocation, setup_post);
 }
 
-void DELETE_request(const std::string& url, const std::string& expected, const std::string& testLocation)
+void DELETE_test(const std::string& url, const std::string& expected, const std::string& testLocation)
 {
-	curl_template(url, expected, testLocation, setup_delete);
+	curl_request_test_template(url, expected, testLocation, setup_delete);
 }
 
-void add_hosts_to_curl(void)
+void create_curl_host_list(void)
 {
 	host_set::iterator it;
 	for (it = g_host_set.begin(); it != g_host_set.end(); ++it)
@@ -80,8 +80,8 @@ void add_hosts_to_curl(void)
 	}
 }
 
-void add_host(const std::string& server_name, const std::string& port)
+void add_host(const std::string& uri_host, const std::string& port)
 {
-	if (server_name.empty() == false && port.empty() == false)
-		g_host_set.insert(std::make_pair(server_name, port));
+	if (uri_host.empty() == false && port.empty() == false)
+		g_host_set.insert(std::make_pair(uri_host, port));
 }

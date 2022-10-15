@@ -16,13 +16,13 @@ extern curl_slist *g_curl_host_list;
 extern host_set g_host_set;
 
 
-void GET_request(const std::string&, const std::string&, const std::string&);
+void GET_test(const std::string&, const std::string&, const std::string&);
 
-void POST_request(const std::string&, const std::string&, const std::string&);
+void POST_test(const std::string&, const std::string&, const std::string&);
 
-void DELETE_request(const std::string&, const std::string&, const std::string&);
+void DELETE_test(const std::string&, const std::string&, const std::string&);
 
-void add_hosts_to_curl(void);
+void create_curl_host_list(void);
 
 void add_host(const std::string&, const std::string&);
 
