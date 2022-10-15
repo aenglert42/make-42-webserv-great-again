@@ -7,8 +7,10 @@
 # Unignore all dirs
 !*/
 
-# Unignore Makefile
+# Unignore files
 !Makefile
+!cgi
+!no_permission_cgi
 
 # Prerequisites
 *.d
