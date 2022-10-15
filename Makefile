@@ -12,7 +12,7 @@ OBJS = $(patsubst $(OBJ_DIR)$(SRC_DIR)%.o,$(OBJ_DIR)%.o,$(patsubst %.cpp,$(OBJ_D
 HEADERS = $(wildcard $(HEADER_DIR)*.h)
 PLATFORM := $(shell uname -s)
 CC := c++
-CFLAGS = -g -Wall -Wextra -Werror -std=c++17
+CFLAGS = -Wall -Wextra -Werror -std=c++17
 INCLUDES = -I $(HEADER_DIR)
 LINK := -lcurl
 DEPS = $(wildcard $(INC_DIR)*.hpp) Makefile

@@ -40,6 +40,8 @@ static void create_file_with_content(const std::string& directory, const std::st
 
 static void create_files(void)
 {
+	create_file_with_content(DIR, "%file");
+	
 	create_file_with_content(PERMISSION_DIR, FILE);
 	create_file_with_content(PERMISSION_DIR, NO_PERMISSION_FILE);
 	create_file_with_content(PERMISSION_DIR, DOT_CGI);
