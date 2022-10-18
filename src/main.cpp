@@ -28,13 +28,13 @@ int main(void)
 	give_instructions();
 	add_hosts();
 	create_curl_host_list();
-	print_custom();
+	print_section_title();
 	run_custom_tests();
-	print_GET();
+	print_section_title(GET);
 	run_GET_tests();
-	print_POST();
+	print_section_title(POST);
 	run_POST_tests();
-	print_DELETE();
+	print_section_title(DELETE);
 	run_DELETE_tests();
 	print_summary();
 	clear_infrastructure();

@@ -2,6 +2,7 @@
 
 void custom_test(const std::string& request_raw, const std::string& expected_raw, const std::string& testLocation)
 {
+	static int i = 1;
 	std::string request = request_raw.substr(1, request_raw.length() - 2);
 	std::string expected = expected_raw.substr(1, expected_raw.length() - 2);
 	int sock = 0;
@@ -41,5 +42,7 @@ void custom_test(const std::string& request_raw, const std::string& expected_raw
 	while (valread > 0);
 	if (valread < 0)
 		response = "Error: Read failed";
-	evaluate_test(request.substr(0, request.find_first_of('\n') - 1), response, expected, UNKNOWN, testLocation);
+	std::cout << YELLOW << "Test " << i << ": " << request.substr(0, request.find_first_of('\n') - 1) << RESET << " located in: " << BLUE << testLocation << RESET << std::endl;
+	evaluate_test(response, expected);
+	i++;
 }

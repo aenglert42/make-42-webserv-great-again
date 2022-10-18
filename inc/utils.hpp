@@ -11,6 +11,7 @@
 
 extern int g_ko_counter;
 
-void evaluate_test(const std::string&, const std::string&, const std::string&, long, const std::string&);
+void evaluate_test(const std::string&, const std::string&, const long&);
+void evaluate_test(const std::string&, const std::string&);
 
 #endif

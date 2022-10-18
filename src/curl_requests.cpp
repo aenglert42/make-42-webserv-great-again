@@ -28,7 +28,7 @@ static void setup_delete(CURL *curl, std::string *response, const std::string& u
 	curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "DELETE");
 }
 
-static void curl_request_test_template(const std::string& url, const std::string& expected, const std::string& testLocation, void (*setup_curl)(CURL*, std::string*, const std::string&))
+static void curl_request_test_template(const std::string& url, const std::string& expected, void (*setup_curl)(CURL*, std::string*, const std::string&))
 {
 	long statuscode = 0;
 	CURL *curl= curl_easy_init();
@@ -36,7 +36,7 @@ static void curl_request_test_template(const std::string& url, const std::string
 	std::string response = "";
 	if(curl)
 	{
-		(*setup_curl)(curl, &response, url.substr(1, url.length() - 2));
+		(*setup_curl)(curl, &response, url);
 		res = curl_easy_perform(curl);
 		if(res == CURLE_OK)
 			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &statuscode);
@@ -45,7 +45,7 @@ static void curl_request_test_template(const std::string& url, const std::string
 			response = "Error: ";
 			response += curl_easy_strerror(res);
 		}
-		evaluate_test(url.substr(1, url.length() - 2), response, expected.substr(1, expected.length() - 2), statuscode, testLocation);
+		evaluate_test(response, expected.substr(1, expected.length() - 2), statuscode);
 		curl_easy_cleanup(curl);
 	}
 	else
@@ -54,17 +54,29 @@ static void curl_request_test_template(const std::string& url, const std::string
 
 void GET_test(const std::string& url, const std::string& expected, const std::string& testLocation)
 {
-	curl_request_test_template(url, expected, testLocation, setup_get);
+	static int i_get = 1;
+
+	print_test_title(i_get, GET, url.substr(1, url.length() - 2), testLocation);
+	curl_request_test_template(url.substr(1, url.length() - 2), expected, setup_get);
+	i_get++;
 }
 
 void POST_test(const std::string& url, const std::string& expected, const std::string& testLocation)
 {
-	curl_request_test_template(url, expected, testLocation, setup_post);
+	static int i_post = 1;
+
+	print_test_title(i_post, POST, url.substr(1, url.length() - 2), testLocation);
+	curl_request_test_template(url.substr(1, url.length() - 2), expected, setup_post);
+	i_post++;
 }
 
 void DELETE_test(const std::string& url, const std::string& expected, const std::string& testLocation)
 {
-	curl_request_test_template(url, expected, testLocation, setup_delete);
+	static int i_delete = 1;
+
+	print_test_title(i_delete, DELETE, url.substr(1, url.length() - 2), testLocation);
+	curl_request_test_template(url.substr(1, url.length() - 2), expected, setup_delete);
+	i_delete++;
 }
 
 void create_curl_host_list(void)
