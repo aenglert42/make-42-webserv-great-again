@@ -1,5 +1,5 @@
 # make-42-webserv-great-again
-Guide on how to manually test your "42 Coding School" project "webserv" (October 2022) and beta version of an automated tester.
+A guide on how to manually test your "42 Coding School" project "webserv" (October 2022) and beta version of an automated tester.
 
 ## manual testing
 
