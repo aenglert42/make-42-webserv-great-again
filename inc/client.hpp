@@ -15,7 +15,6 @@
 #include "defines.hpp"
 #include "utils.hpp"
 
-#define UNKNOWN -2
 #define BUFFER_SIZE 1024
 
 extern uint16_t g_port_for_custom_requests;

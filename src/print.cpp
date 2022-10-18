@@ -11,24 +11,24 @@ void print_welcome(void)
 " << RESET<< std::endl;
 }
 
-void print_custom(void)
+void print_section_title(void)
 {
 	std::cout << GREEN << BOLD << "Custom Requests" << RESET<< std::endl;
 }
 
-void print_GET(void)
+void print_section_title(const std::string& section)
 {
-	std::cout << GREEN << BOLD << "GET Requests" << RESET<< std::endl;
+	std::cout << GREEN << BOLD << section << " Requests" << RESET<< std::endl;
 }
 
-void print_POST(void)
+void print_test_title(int i, const std::string& section, const std::string& testCase, const std::string& testLocation)
 {
-	std::cout << GREEN << BOLD << "POST Requests" << RESET<< std::endl;
+	std::cout << YELLOW << "Test " << i << ": " << section << " " << testCase << RESET << " located in: " << BLUE << testLocation << RESET << std::endl;
 }
 
-void print_DELETE(void)
+void print_test_title(int i, const std::string& testCase, const std::string& testLocation)
 {
-	std::cout << GREEN << BOLD << "DELETE Requests" << RESET<< std::endl;
+	std::cout << YELLOW << "Test " << i << ": " << testCase << RESET << " located in: " << BLUE << testLocation << RESET << std::endl;
 }
 
 void print_summary(void)

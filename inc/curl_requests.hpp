@@ -8,6 +8,7 @@
 #include <set>
 #include <curl/curl.h>
 #include "utils.hpp"
+#include "print.hpp"
 
 typedef std::set<std::pair<std::string, std::string> > host_set;
 
