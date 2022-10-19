@@ -1,5 +1,76 @@
 # make-42-webserv-great-again
 A guide on how to manually test your "42 Coding School" project "webserv" (October 2022) and beta version of an automated tester.
+</br>
+
+## Table of contents
+* [How to manually send a specific HTTP request](#how-to-manually-send-a-specific-http-request)
+  * [Curl](#curl)
+  * [Netcat](#netcat)
+  * [Postman](#postman)
+* [How to perform a stress test](#how-to-perform-a-stress-test)
+  * [How to install siege](#how-to-install-siege)
+    * [Install brew](#install-brew)
+    * [Install siege](#install-siege)
+* [Automated tester](#automated-tester)
+  * [Setup](#setup)
+  * [How to launch](#how-to-launch)
+  * [How to customize](#how-to-customize)
+
+## How to manually send a specific HTTP request
+###### <p align="right">Next: [How to perform a stress test](#how-to-perform-a-stress-test)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
+"Text for How to manually send a specific HTTP request"
+</br></br></br>
+
+### Curl
+"Text for Curl"
+</br></br></br>
+
+### Netcat
+"Text for Netcat"
+</br></br></br>
+
+### Postman
+"Text for Postman"
+</br></br></br>
+
+## How to perform a stress test
+###### <p align="right">Next: [Automated tester](#automated-tester)&emsp;Previous: [How to manually send a specific HTTP request](#how-to-manually-send-a-specific-http-request)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
+"Text for How to perform a stress test"
+</br></br></br>
+
+### How to install siege
+"Text for How to install siege"
+</br></br></br>
+
+#### Install brew
+"Text for Install brew"
+</br></br></br>
+
+#### Install siege
+"Text for Install siege"
+</br></br></br>
+
+## Automated tester
+###### <p align="right">Previous: [How to perform a stress test](#how-to-perform-a-stress-test)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
+"Text for Automated tester"
+</br></br></br>
+
+### Setup
+"Text for Setup"
+</br></br></br>
+
+### How to launch
+"Text for How to launch"
+</br></br></br>
+
+### How to customize
+"Text for How to customize"
+</br></br></br>
+
+
+
+
+
 
 ## manual testing
 
