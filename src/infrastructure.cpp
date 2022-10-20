@@ -64,7 +64,10 @@ static void create_files(void)
 	create_file_with_content(UPLOADS, NO_PERMISSION_FILE);
 	create_file_with_content(UPLOADS, NO_PERMISSION_FILE_CGI);
 
-	create_file_with_content(SERVER1_CUSTOM, CUSTOM_HTML, "MY_CUSTOM_PAGE");
+	create_file_with_content(SERVER1, FILE);
+	create_file_with_content(SERVER1_CUSTOM, CUSTOM_HTML, "MY_CUSTOM_404_PAGE");
+
+	create_file_with_content(SERVER2, FILE);
 }
 
 static void create_directories(void)
