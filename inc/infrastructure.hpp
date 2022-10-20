@@ -20,6 +20,7 @@
 #define AUTOINDEX INDEX"no/autoindex/"
 #define NO_AUTOINDEX INDEX"no/no_autoindex/"
 #define AUTOINDEX_NO_PERMISSION_DIR AUTOINDEX"no_permission_dir/"
+#define NO_DELETE_DIR UPLOADS"no_permission_dir/"
 
 #define SERVER1 ROOT"server1/"
 #define SERVER1_CUSTOM SERVER1"custom/"
