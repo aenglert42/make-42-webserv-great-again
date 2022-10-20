@@ -6,7 +6,7 @@
 #include "defines.hpp"
 #include "client.hpp"
 
-#define CUSTOM_TEST(REQUEST, RESPONSE) custom_test(#REQUEST, #RESPONSE, FILE_LINE)
+// #define CUSTOM_TEST(REQUEST, RESPONSE) custom_test(#REQUEST, #RESPONSE, FILE_LINE)
 
 void run_custom_tests(void);
 

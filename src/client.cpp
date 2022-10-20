@@ -1,10 +1,10 @@
 #include "client.hpp"
 
-void custom_test(const std::string& request_raw, const std::string& expected_raw, const std::string& testLocation)
+void custom_test(const std::string& request, const std::string& expected, const std::string& testLocation)
 {
 	static int i = 1;
-	std::string request = request_raw.substr(1, request_raw.length() - 2);
-	std::string expected = expected_raw.substr(1, expected_raw.length() - 2);
+	// std::string request = request_raw.substr(1, request_raw.length() - 2);
+	// std::string expected = expected_raw.substr(1, expected_raw.length() - 2);
 	int sock = 0;
 	long valread;
 	struct sockaddr_in serv_addr;
@@ -34,14 +34,8 @@ void custom_test(const std::string& request_raw, const std::string& expected_raw
 		return ;
 	}
 	send(sock, request.c_str(), request.length(), 0);
-	do
-	{
-		valread = read(sock, readBuffer, BUFFER_SIZE);
-		response += readBuffer;
-	}
-	while (valread > 0);
-	if (valread < 0)
-		response = "Error: Read failed";
+	valread = read(sock, readBuffer, BUFFER_SIZE - 1);
+	response = readBuffer;
 	std::cout << YELLOW << "Test " << i << ": " << request.substr(0, request.find_first_of('\n') - 1) << RESET << " located in: " << BLUE << testLocation << RESET << std::endl;
 	evaluate_test(response, expected);
 	i++;
