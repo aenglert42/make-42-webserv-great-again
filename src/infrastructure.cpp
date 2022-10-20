@@ -13,6 +13,7 @@ static void set_permission(const std::string& directory, const std::string& file
 static void apply_permissions(void)
 {
 	set_permission(PERMISSION_DIR, NO_PERMISSION_FILE, std::filesystem::perms::none);
+	set_permission(UPLOADS, NO_PERMISSION_FILE, std::filesystem::perms::none);
 	set_permission(UPLOADS, NO_PERMISSION_FILE_CGI, std::filesystem::perms::none);
 	set_permission(NO_PERMISSION_DIR, std::filesystem::perms::owner_read | std::filesystem::perms::owner_write);
 	set_permission(AUTOINDEX_NO_PERMISSION_DIR, std::filesystem::perms::owner_write);
@@ -61,13 +62,16 @@ static void create_files(void)
 	create_file_with_content(NO_PERMISSION_DIR, FILE);
 	create_file_with_content(NO_PERMISSION_DIR, CGI_FILE);
 
+	create_file_with_content(UPLOADS, CGI_FILE);
 	create_file_with_content(UPLOADS, NO_PERMISSION_FILE);
 	create_file_with_content(UPLOADS, NO_PERMISSION_FILE_CGI);
 
 	create_file_with_content(SERVER1, FILE);
+	create_file_with_content(SERVER1, CGI_FILE);
 	create_file_with_content(SERVER1_CUSTOM, CUSTOM_HTML, "MY_CUSTOM_404_PAGE");
 
 	create_file_with_content(SERVER2, FILE);
+	create_file_with_content(SERVER2, CGI_FILE);
 }
 
 static void create_directories(void)
