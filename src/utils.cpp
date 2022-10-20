@@ -28,6 +28,7 @@ void evaluate_test(const std::string& response, const std::string& expected, con
 		std::cout << "expected: " << expected << std::endl;
 		std::cout << "recieved: " << response << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void evaluate_test(const std::string& response, const std::string& expected)
@@ -43,4 +44,5 @@ void evaluate_test(const std::string& response, const std::string& expected)
 		std::cout << "expected: " << expected << std::endl;
 		std::cout << "recieved: " << response << std::endl;
 	}
+	std::cout << std::endl;
 }
