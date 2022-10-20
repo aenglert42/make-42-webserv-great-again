@@ -56,15 +56,99 @@ A guide on how to manually test your "42 Coding School" project "webserv" (Octob
 </br></br></br>
 
 ### Setup
-"Text for Setup"
+Clone the "make-42-webserv-great-again" repository into the root directory of your "webserv" repository.</br>
+</br>
+"default error page" = error_page
+"client body size" = max_body_size
+"directory listing" = autoindex</br>
+"default file to answer if the request is a directory" = index_page (only the file name which then will be searched in the requested directory)</br>
+</br>
+Create a configuration file with the following settings:</br>
+</br>
+#### &ensp;Virtual Server 0
+&emsp;&emsp;__server_name:__ webserv</br>
+&emsp;&emsp;__port:__ 80</br>
+&emsp;&emsp;__root:__ make-42-webserv-great-again/server/root/</br>
+&emsp;&emsp;__max_body_size:__ 100</br>
+&emsp;&emsp;__autoindex:__ false</br>
+&emsp;&emsp;__index_page:__ index.html</br>
+&emsp;&emsp;__cgi .cgi:__ should be executed using the executable	"make-42-webserv-great-again/server/cgi_bin/cgi".</br>
+</br>
+&emsp;&emsp;__route /route/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET</br>
+&emsp;&emsp;&emsp;routed to: make-42-webserv-great-again/server/root/dir/</br>
+</br>
+&emsp;&emsp;__route /route/one/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET</br>
+&emsp;&emsp;&emsp;index_page: custom.html</br>
+&emsp;&emsp;&emsp;routed to: make-42-webserv-great-again/server/root/dir/one</br>
+</br>
+&emsp;&emsp;__route /route/one/two/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET</br>
+&emsp;&emsp;&emsp;index_page: index.html</br>
+&emsp;&emsp;&emsp;routed to: make-42-webserv-great-again/server/root/dir/index/</br>
+</br>
+&emsp;&emsp;__route /uploads/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET, POST, DELETE</br>
+&emsp;&emsp;&emsp;routed to: make-42-webserv-great-again/server/root/dir/uploads/</br>
+</br>
+&emsp;&emsp;__route /index/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET</br>
+&emsp;&emsp;&emsp;routed to: make-42-webserv-great-again/server/root/dir/index/</br>
+</br>
+&emsp;&emsp;__route /index/no/autoindex/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET</br>
+&emsp;&emsp;&emsp;autoindex: true</br>
+&emsp;&emsp;&emsp;routed to: make-42-webserv-great-again/server/root/dir/index/no/autoindex/</br>
+</br>
+&emsp;&emsp;__route /index/no/no_autoindex/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET</br>
+&emsp;&emsp;&emsp;autoindex: false</br>
+&emsp;&emsp;&emsp;routed to: make-42-webserv-great-again/server/root/dir/index/no/no_autoindex/</br>
+</br>
+&emsp;&emsp;__route /index/custom/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET</br>
+&emsp;&emsp;&emsp;index_page: custom.html</br>
+&emsp;&emsp;&emsp;routed to: make-42-webserv-great-again/server/root/dir/index/custom/</br>
+</br>
+#### &ensp;Virtual Server 1
+&emsp;&emsp;__server_name:__ server1</br>
+&emsp;&emsp;__port:__ 6000</br>
+&emsp;&emsp;__root:__ make-42-webserv-great-again/server/root/server1/</br>
+&emsp;&emsp;__error_page 404:__ make-42-webserv-great-again/server/root/server1/custom/custom.html</br>
+&emsp;&emsp;__cgi .cgi:__ should be executed using the executable	"make-42-webserv-great-again/server/cgi_bin/no_permission_cgi".</br>
+
+#### &ensp;Virtual Server 2
+&emsp;&emsp;__server_name:__ server2</br>
+&emsp;&emsp;__port:__ 8080, 8081</br>
+&emsp;&emsp;__root:__ make-42-webserv-great-again/server/root/server2/</br>
+&emsp;&emsp;__cgi .cgi:__ should be executed using the executable	"doesntexist".</br>
+</br>
+&emsp;&emsp;__route /__</br>
+&emsp;&emsp;&emsp;allowed methods: none</br>
+&emsp;&emsp;&emsp;autoindex: false</br>
+&emsp;&emsp;__route /route/__</br>
+&emsp;&emsp;&emsp;allowed methods: GET POST</br>
 </br></br></br>
 
 ### How to launch
-"Text for How to launch"
+Start your server with the configuration described in [Setup](#setup) and use ```make run``` in the command line from the root of the "make-42-webserv-great-again" repository.
 </br></br></br>
 
 ### How to customize
 "Text for How to customize"
+
+#### Modify custom tests
+To add, remove or change custom tests, edit the file *1_custom.cpp* within the root of the "make-42-webserv-great-again" repository.
+
+#### Modify GET request tests
+To add, remove or change GET request tests, edit the file *2_get.cpp* within the root of the "make-42-webserv-great-again" repository.
+
+#### Modify POST request tests
+To add, remove or change POST request tests, edit the file *3_post.cpp* within the root of the "make-42-webserv-great-again" repository.
+
+#### Modify DELETE request tests
+To add, remove or change DELETE request tests, edit the file *4_delete.cpp* within the root of the "make-42-webserv-great-again" repository.
 </br></br></br>
 
 
