@@ -87,15 +87,57 @@ In the first stage the tester checks for an exact match between the response bod
 If it is not an exact match the expected result string gets interpreted as status code (if possible) and gets checked against the response's status code. On success the tester shows "OK status code: " followed by the status code.
 For the last stage of comparison the response body is checked for an occurrence of the "expected outcome string". If it is found the tester shows "OK found: " followed by the found string. This comparison is very unexact, therefore the "expected output string" should be as special as possible to lower the change of false positives.
 If none of the comparisons succeeds, the tester will show "KO" followed by the received response.
+
+The output looks like this:</br>
+<img width="397" alt="image" src="https://user-images.githubusercontent.com/80413516/197232070-93e01c52-14ea-40ec-b971-213a4424d69b.png">
+</br>The blue text shows the file and line number of the test case. You can press the command key and left-click on it to jump there.
+
+On each run the tester will create the following directory structure within make-42-webserv-great-again/server/ and delete it afterwards:</br>
+```
+root/
+├── dir/
+│   ├── %file
+│   ├── custom/
+│   ├── index/
+│   │   ├── custom/
+│   │   │   └── custom.html
+│   │   ├── index.html
+│   │   └── no/
+│   │       ├── autoindex/
+│   │       ├── no_autoindex/
+│   │       └── no_permission_dir/
+│   ├── no_permission_dir/
+│   │   ├── file
+│   │   └── file.cgi
+│   ├── one/
+│   │   ├── custom.html
+│   │   └── two/
+│   │       └── index.html
+│   ├── permission_dir/
+│   │   ├── .cgi
+│   │   ├── file
+│   │   ├── file.cgi
+│   │   └── no_permission_file
+│   └── uploads/
+│       ├── file.cgi
+│       ├── no_permission_dir/
+│       │   └── file
+│       ├── no_permission_file
+│       └── no_permission_file.cgi
+├── index.html
+├── server1/
+│   ├── custom/
+│   │   └── custom.html
+│   ├── file
+│   └── file.cgi
+└── server2/
+    ├── file
+    └── file.cgi
+```
 </br></br></br>
 
 ### Setup
 Clone the "make-42-webserv-great-again" repository into the root directory of your "webserv" repository.</br>
-</br>
-"default error page" = error_page
-"client body size" = max_body_size
-"directory listing" = autoindex</br>
-"default file to answer if the request is a directory" = index_page (only the file name which then will be searched in the requested directory)</br>
 </br>
 Create a configuration file with the following settings:</br>
 </br>
@@ -163,6 +205,13 @@ Create a configuration file with the following settings:</br>
 &emsp;&emsp;&emsp;autoindex: false</br>
 &emsp;&emsp;__route /route/__</br>
 &emsp;&emsp;&emsp;allowed methods: GET POST</br>
+</br>
+Relation of subject expression to the used keywords:</br>
+</br>
+"default error page" = error_page</br>
+"client body size" = max_body_size</br>
+"directory listing" = autoindex (true / false)</br>
+"default file to answer if the request is a directory" = index_page (the name of the file)</br>
 </br></br></br>
 
 ### How to launch
@@ -170,17 +219,21 @@ Start your server with the configuration described in [Setup](#setup) and use ``
 </br></br></br>
 
 ### How to customize
-"Text for How to customize"
+To add, remove or change test cases, edit the corresponding file within the root of the "make-42-webserv-great-again" repository, as described below. To add, remove or change the known host:port combinations for the tester, edit the file *0_hosts.cpp*.</br>
+
+Usage: ```add_host("uri-host", "port");```</br>
 
 #### Modify custom tests
-To add, remove or change custom tests, edit the file *1_custom.cpp* within the root of the "make-42-webserv-great-again" repository.
+Edit the file *1_custom.cpp* as follows: ```custom_test("HTTP request", "expected resonse body or status code", FILE_LINE);```</br>
+
+The default port for the custom requests is port 80. Make sure your server is listening on it, or change it by edit ```uint16_t g_port_for_custom_requests = 80;```</br>
 
 #### Modify GET request tests
-To add, remove or change GET request tests, edit the file *2_get.cpp* within the root of the "make-42-webserv-great-again" repository.
+Edit the file *2_get.cpp* as follows: ```GET_test("url", "expected resonse body or status code", FILE_LINE);```</br>
 
 #### Modify POST request tests
-To add, remove or change POST request tests, edit the file *3_post.cpp* within the root of the "make-42-webserv-great-again" repository.
+Edit the file *3_post.cpp* as follows: ```POST_test("url", "expected resonse body or status code", FILE_LINE);```</br>
 
 #### Modify DELETE request tests
-To add, remove or change DELETE request tests, edit the file *4_delete.cpp* within the root of the "make-42-webserv-great-again" repository.
+Edit the file *4_delete.cpp* as follows: ```DELETE_test("url", "expected resonse body or status code", FILE_LINE);```</br>
 </br></br></br>
