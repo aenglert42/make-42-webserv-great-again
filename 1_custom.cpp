@@ -31,6 +31,7 @@ void run_custom_tests(void)
 	custom_test("GET .. HTTP/1.1\r\nHost: webserv\r\n\r\n", "content of index.html in ./server/root/", FILE_LINE); // path resolving
 	custom_test("GET ... HTTP/1.1\r\nHost: webserv\r\n\r\n", "404", FILE_LINE); // path resolving
 	custom_test("GET .../README.md HTTP/1.1\r\nHost: webserv\r\n\r\n", "404", FILE_LINE); // path resolving
+	custom_test("GET /../../../../../../ HTTP/1.1\r\nHost: webserv\r\n\r\n", "content of index.html in ./server/root/", FILE_LINE); // path resolving
 	custom_test("GET / HTTP/1.0\r\nHost: webserv\r\n\r\n", "505", FILE_LINE); // invalid protocol
 	custom_test("GET / HTTP/1.1\r\n\r\n", "400", FILE_LINE); // no host
 	custom_test("GET / HTTP/1.1\r\nHost: webserv\r\nHost: webserv\r\n\r\n", "400", FILE_LINE); // header field duplicate
