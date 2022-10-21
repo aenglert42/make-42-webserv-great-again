@@ -15,6 +15,7 @@ A guide on how to manually test your "42 Coding School" project "webserv" (Octob
   * [Setup](#setup)
   * [How to launch](#how-to-launch)
   * [How to customize](#how-to-customize)
+</br>
 
 ## How to manually send a specific HTTP request
 ###### <p align="right">Next: [How to perform a stress test](#how-to-perform-a-stress-test)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
@@ -22,20 +23,32 @@ A guide on how to manually test your "42 Coding School" project "webserv" (Octob
 </br></br></br>
 
 ### Curl
-"Text for Curl"
+Curl is a command-line utility for transferring data from or to a server.</br>
+</br>
+
+```curl -X POST -H "Content-Type: plain/text" --data "request body text" http://localhost:8080/new_file.txt```
+
+```curl --resolve webserv.com:80:127.0.0.1 http://webserv.com/```</br>
+
+(Port 80 is deafault and therefore not needed)</br>
+
+```curl --resolve www.webserv.com:8080:127.0.0.1 http://www.webserv.com:8080```
 </br></br></br>
 
 ### Netcat
-"Text for Netcat"
+Netcat is a computer networking utility for reading from and writing to network connections using TCP or UDP. You can use it to send a freely written HTTP request to your server. This is nice beacuse this way you could also send invalid requests. An easy way of using netcat is to echo your custom request and pipe it into netcat as follows:</br>
+</br>
+```echo "GET / HTTP/1.1\r\nHost: webserv\r\n\r\n" | nc localhost 8080```
 </br></br></br>
 
 ### Postman
-"Text for Postman"
+Postman is an API platform for building and using APIs. You can use it to send HTTP requests to your server. Download it to to your school iMac via the "Managed Software Center".
 </br></br></br>
 
 ## How to perform a stress test
 ###### <p align="right">Next: [Automated tester](#automated-tester)&emsp;Previous: [How to manually send a specific HTTP request](#how-to-manually-send-a-specific-http-request)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
-"Text for How to perform a stress test"
+
+```siege -b http://localhost:8080/empty.html```
 </br></br></br>
 
 ### How to install siege
@@ -43,11 +56,30 @@ A guide on how to manually test your "42 Coding School" project "webserv" (Octob
 </br></br></br>
 
 #### Install brew
-"Text for Install brew"
+https://brew.sh/
+
+(https://42born2code.slack.com/archives/C024QR1HT62/p1645537433618059)
+if you wanna install brew in goinfre instead of your home drive (because it takes a lot of storage, even more if you install some tools) you can use this command:
+rm -rf $HOME/.brew && rm -rf $HOME/goinfre/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew && echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
+this command will also remove your current brew packages if you just wanna move it to goinfre you can use this command:
+mv $HOME/.brew $HOME/goinfre/.brew && echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
+the second one is not tested.
+After installing always restart your terminal and run
+brew --version
+which brew
+the second one should show something like this:
+/Users/jsiller/goinfre/.brew/bin/brew
+with 'jsiller' being replaced by your username
 </br></br></br>
 
 #### Install siege
-"Text for Install siege"
+```brew install siege```
+
+If you get _"Error: Xcode alone is not sufficient on Catalina."_ install the xcode Command Line Tools with ```xcode-select --install```. This will open the following installation window:
+
+<img width="453" alt="screenshot" src="https://user-images.githubusercontent.com/80413516/195597554-70cfcfbd-858b-4394-8c5f-7a210feec5ff.png">
+
+Click on install -> aggree -> done and then use ```brew install siege``` again.
 </br></br></br>
 
 ## Automated tester
@@ -156,60 +188,3 @@ To add, remove or change POST request tests, edit the file *3_post.cpp* within t
 #### Modify DELETE request tests
 To add, remove or change DELETE request tests, edit the file *4_delete.cpp* within the root of the "make-42-webserv-great-again" repository.
 </br></br></br>
-
-
-
-
-
-
-## manual testing
-
-### via terminal command line
-
-#### curl
-
-curl -X POST -H "Content-Type: plain/text" --data "BODY IS HERE write something shorter or longer than body limit" http://localhost:8080/new_file.txt
-
-curl --resolve webserv.com:80:127.0.0.1 http://webserv.com/
-(Port 80 is deafault and therefore not needed)
-
-curl --resolve www.webserv.com:8080:127.0.0.1 http://www.webserv.com:8080
-
-
-#### nc
-
-echo "GET / HTTP/1.1\r\nHost: webserv\r\n\r\n" | nc localhost 8080
-
-### using postman
-
-## siege
-
-siege -b http://localhost:8080/empty.html
-
-### install brew
-
-https://brew.sh/
-
-(https://42born2code.slack.com/archives/C024QR1HT62/p1645537433618059)
-if you wanna install brew in goinfre instead of your home drive (because it takes a lot of storage, even more if you install some tools) you can use this command:
-rm -rf $HOME/.brew && rm -rf $HOME/goinfre/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew && echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
-this command will also remove your current brew packages if you just wanna move it to goinfre you can use this command:
-mv $HOME/.brew $HOME/goinfre/.brew && echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
-the second one is not tested.
-After installing always restart your terminal and run
-brew --version
-which brew
-the second one should show something like this:
-/Users/jsiller/goinfre/.brew/bin/brew
-with 'jsiller' being replaced by your username
-
-### install siege
-
-brew install siege
-
-If you get _"Error: Xcode alone is not sufficient on Catalina."_ install the xcode Command Line Tools with ```xcode-select --install```. This will open the following installation window:
-
-<img width="453" alt="screenshot" src="https://user-images.githubusercontent.com/80413516/195597554-70cfcfbd-858b-4394-8c5f-7a210feec5ff.png">
-
-Click on install -> aggree -> done and then use ```brew install siege``` again.
-
