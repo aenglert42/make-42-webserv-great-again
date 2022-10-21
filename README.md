@@ -35,7 +35,7 @@ Here are a few examples of how to use it:</br>
 </br>
 ```curl --resolve www.webserv.com:8080:127.0.0.1 http://www.webserv.com:8080/```</br>
 </br>
-```curl --resolve webserv.com:80:127.0.0.1 http://webserv.com/index.html``` (here port 80 is not needed, becuse it is the default port for HTTP)</br>
+```curl --resolve webserv.com:80:127.0.0.1 http://webserv.com/index.html``` (port 80 is the default port for HTTP)</br>
 </br>
 
 ### Netcat
@@ -134,7 +134,7 @@ root/
     ├── file
     └── file.cgi
 ```
-</br></br></br>
+</br>
 
 ### Setup
 Clone the "make-42-webserv-great-again" repository into the root directory of your "webserv" repository.</br>
@@ -235,5 +235,4 @@ Edit the file *2_get.cpp* as follows: ```GET_test("url", "expected resonse body 
 Edit the file *3_post.cpp* as follows: ```POST_test("url", "expected resonse body or status code", FILE_LINE);```</br>
 
 #### Modify DELETE request tests
-Edit the file *4_delete.cpp* as follows: ```DELETE_test("url", "expected resonse body or status code", FILE_LINE);```</br>
-</br></br></br>
+Edit the file *4_delete.cpp* as follows: ```DELETE_test("url", "expected resonse body or status code", FILE_LINE);```
