@@ -15,9 +15,9 @@ static void apply_permissions(void)
 	set_permission(PERMISSION_DIR, NO_PERMISSION_FILE, std::filesystem::perms::none);
 	set_permission(UPLOADS, NO_PERMISSION_FILE, std::filesystem::perms::none);
 	set_permission(UPLOADS, NO_PERMISSION_FILE_CGI, std::filesystem::perms::none);
-	set_permission(NO_DELETE_DIR, std::filesystem::perms::owner_read);
-	set_permission(NO_PERMISSION_DIR, std::filesystem::perms::owner_read | std::filesystem::perms::owner_write);
-	set_permission(AUTOINDEX_NO_PERMISSION_DIR, std::filesystem::perms::owner_write);
+	set_permission(NO_DELETE_DIR, std::filesystem::perms::none);
+	set_permission(NO_PERMISSION_DIR, std::filesystem::perms::none);
+	set_permission(AUTOINDEX_NO_PERMISSION_DIR, std::filesystem::perms::none);
 }
 
 static void create_file_with_content(const std::string& directory, const std::string& file, const std::string& content)
