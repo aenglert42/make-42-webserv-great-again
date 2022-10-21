@@ -88,7 +88,9 @@ If it is not an exact match the expected result string gets interpreted as statu
 For the last stage of comparison the response body is checked for an occurrence of the "expected outcome string". If it is found the tester shows "OK found: " followed by the found string. This comparison is very unexact, therefore the "expected output string" should be as special as possible to lower the change of false positives.
 If none of the comparisons succeeds, the tester will show "KO" followed by the received response.
 
+The output looks like this:</br>
 <img width="397" alt="image" src="https://user-images.githubusercontent.com/80413516/197232070-93e01c52-14ea-40ec-b971-213a4424d69b.png">
+</br>The blue text shows the file and line number of the test case. You can press the command key and left-click on it to jump there.
 
 On each run the tester will create the following directory structure within make-42-webserv-great-again/server/ and delete it afterwards:</br>
 ```
