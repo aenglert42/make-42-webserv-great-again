@@ -19,28 +19,30 @@ A guide on how to manually test your "42 Coding School" project "webserv" (Octob
 
 ## How to manually send a specific HTTP request
 ###### <p align="right">Next: [How to perform a stress test](#how-to-perform-a-stress-test)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
-"Text for How to manually send a specific HTTP request"
-</br></br></br>
-
+There are many tools taht you can use to send specific HTTp requests to test how your server responds. To name some of them there are curl, netcat and postman which are all available on the schools iMacs.</br>
+</br>
 ### Curl
 Curl is a command-line utility for transferring data from or to a server.</br>
 </br>
+The -X option lets you define the HTTP request method (by default it is GET)</br>
+The -H option lets you add, replace or remove request header fields (curl adds some by default)</br>
+The --data option lets you add a request body.</br>
+The --resolve option allows you to internally redirect the requests for a host to an IP address. You can use this to be able to send requests to hosts other than 127.0.0.1 or localhost.
 
-```curl -X POST -H "Content-Type: plain/text" --data "request body text" http://localhost:8080/new_file.txt```
-
-```curl --resolve webserv.com:80:127.0.0.1 http://webserv.com/```</br>
-
-(Port 80 is deafault and therefore not needed)</br>
-
-```curl --resolve www.webserv.com:8080:127.0.0.1 http://www.webserv.com:8080```
-</br></br></br>
+Here are a few examples of how to use it:</br>
+</br>
+```curl -X POST -H "Content-Type: plain/text" --data "request body text" http://localhost:8080/new_file.txt```</br>
+</br>
+```curl --resolve www.webserv.com:8080:127.0.0.1 http://www.webserv.com:8080/```</br>
+</br>
+```curl --resolve webserv.com:80:127.0.0.1 http://webserv.com/index.html``` (here port 80 is not needed, becuse it is the default port for HTTP)</br>
+</br>
 
 ### Netcat
 Netcat is a computer networking utility for reading from and writing to network connections using TCP or UDP. You can use it to send a freely written HTTP request to your server. This is nice beacuse this way you could also send invalid requests. An easy way of using netcat is to echo your custom request and pipe it into netcat as follows:</br>
 </br>
-```echo "GET / HTTP/1.1\r\nHost: webserv\r\n\r\n" | nc localhost 8080```
-</br></br></br>
-
+```echo "GET / HTTP/1.1\r\nHost: webserv\r\n\r\n" | nc localhost 8080```</br>
+</br>
 ### Postman
 Postman is an API platform for building and using APIs. You can use it to send HTTP requests to your server. Download it to to your school iMac via the "Managed Software Center".
 </br></br></br>
@@ -48,34 +50,28 @@ Postman is an API platform for building and using APIs. You can use it to send H
 ## How to perform a stress test
 ###### <p align="right">Next: [Automated tester](#automated-tester)&emsp;Previous: [How to manually send a specific HTTP request](#how-to-manually-send-a-specific-http-request)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
 
-```siege -b http://localhost:8080/empty.html```
-</br></br></br>
+Siege is a HTTP load test and benchmark utility and can be used to stress a web server. If you use it with the -b option it will send the request without delays in between and until you exit it (e.g. with ctrl+c). It will then show a summary of the test where you can see the availability. The evaluation sheet asks for an availibility > 99.5%.</br>
+</br>
+For example the command:</br>
+</br>
+```siege -b http://localhost:8080/empty.html```</br>
+</br>
+could give you an output similar to this one:</br>
+
+<img width="448" alt="image" src="https://user-images.githubusercontent.com/80413516/197219605-cd922269-050c-46e2-8778-b16dcb974a4f.png">
 
 ### How to install siege
-"Text for How to install siege"
-</br></br></br>
+You can install siege on the school iMacs by using brew, as described below.
+</br>
 
 #### Install brew
-https://brew.sh/
 
-(https://42born2code.slack.com/archives/C024QR1HT62/p1645537433618059)
-if you wanna install brew in goinfre instead of your home drive (because it takes a lot of storage, even more if you install some tools) you can use this command:
-rm -rf $HOME/.brew && rm -rf $HOME/goinfre/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew && echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
-this command will also remove your current brew packages if you just wanna move it to goinfre you can use this command:
-mv $HOME/.brew $HOME/goinfre/.brew && echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
-the second one is not tested.
-After installing always restart your terminal and run
-brew --version
-which brew
-the second one should show something like this:
-/Users/jsiller/goinfre/.brew/bin/brew
-with 'jsiller' being replaced by your username
-</br></br></br>
+The following command installs brew and adds the path to its binary to .zshrc, so it can be used without the path. If you want to use it in bash, replace "zsh" with "bash".
+
+```rm -rf $HOME/.brew && git clone --depth=1 <https://github.com/Homebrew/brew> $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update```
 
 #### Install siege
-```brew install siege```
-
-If you get _"Error: Xcode alone is not sufficient on Catalina."_ install the xcode Command Line Tools with ```xcode-select --install```. This will open the following installation window:
+To install siege you need [brew](#install-brew). Use the command ```brew install siege```. If you get _"Error: Xcode alone is not sufficient on Catalina."_ install the xcode Command Line Tools with ```xcode-select --install```. This will open the following installation window:
 
 <img width="453" alt="screenshot" src="https://user-images.githubusercontent.com/80413516/195597554-70cfcfbd-858b-4394-8c5f-7a210feec5ff.png">
 
