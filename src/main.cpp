@@ -38,6 +38,7 @@ int main(void)
 	run_DELETE_tests();
 	print_summary();
 	clear_infrastructure();
+	curl_slist_free_all(g_curl_host_list);
 	return 0;
 }
 
