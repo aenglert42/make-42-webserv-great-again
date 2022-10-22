@@ -24,7 +24,7 @@ There are many tools taht you can use to send specific HTTp requests to test how
 ### Curl
 Curl is a command-line utility for transferring data from or to a server.</br>
 </br>
-The -X option lets you define the HTTP request method (by default it is GET)</br>
+The -X option lets you define the request method (by default it is GET)</br>
 The -H option lets you add, replace or remove request header fields (curl adds some by default)</br>
 The --data option lets you add a request body.</br>
 The --resolve option allows you to internally redirect the requests for a host to an IP address. You can use this to be able to send requests to hosts other than 127.0.0.1 or localhost.
@@ -39,12 +39,26 @@ Here are a few examples of how to use it:</br>
 </br>
 
 ### Netcat
-Netcat is a computer networking utility for reading from and writing to network connections using TCP or UDP. You can use it to send a freely written HTTP request to your server. This is nice beacuse this way you could also send invalid requests. An easy way of using netcat is to echo your custom request and pipe it into netcat as follows:</br>
+Netcat is a computer networking utility for reading from and writing to network connections using TCP or UDP. You can use it to send a freely written request to your server. This is nice beacuse this way you could also send invalid requests. An easy way of using netcat is to echo your custom request and pipe it into netcat as follows:</br>
 </br>
 ```echo "GET / HTTP/1.1\r\nHost: webserv\r\n\r\n" | nc localhost 8080```</br>
 </br>
 ### Postman
-Postman is an API platform for building and using APIs. You can use it to send HTTP requests to your server. Download it to to your school iMac via the "Managed Software Center".
+Postman is an API platform for building and using APIs. You can use it to send requests to your server. Download it to to your school iMac via the "Managed Software Center".
+
+Click on the plus to create a new request.</br>
+</br>
+![grafik](https://user-images.githubusercontent.com/80413516/197331605-632674b2-606e-46af-82ab-7154de0d099e.png)
+
+Select the method, enter a url and add a request body and / or header fields (note that there are some hidden default header fileds, that can be removed if needed).</br>
+</br>
+![grafik](https://user-images.githubusercontent.com/80413516/197331792-dd889fcc-e51d-44cf-81a3-db36ee3c8d69.png)
+
+After the request got received, the status code is shown and you can check out it's header fileds and body.</br>
+</br>
+![grafik](https://user-images.githubusercontent.com/80413516/197331868-0a69847f-4c2d-440d-8ab9-4a79c1e1262d.png)
+
+
 </br></br></br>
 
 ## How to perform a stress test
@@ -80,9 +94,9 @@ Click on install -> aggree -> done and then use ```brew install siege``` again.
 
 ## Automated tester
 ###### <p align="right">Previous: [How to perform a stress test](#how-to-perform-a-stress-test)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
-The automated tester is kind of a beta version (private tester made public) and lacks a lot of testing and errorhandling, but I guess it can be usefull anyway. Because some tests depend on the implementation of the server it is also possible that the behaviour of your server might me correct although the tester marks it as wrong or vice versa.</br>
+The automated tester is kind of a beta version (private tester made public) and lacks a lot of testing and errorhandling, but I guess it can be usefull anyway. Because some tests depend on the implementation of the server it is also possible that the behaviour of your server might be correct although the tester marks it as wrong or vice versa.</br>
 </br>
-The tester will send different HTTP requests (test cases) to your server and compare the response it revieves with the expected outcome string. There are three stages of comparison. As soon as a comparison for a test case succeeds, no further comparisons for this test case will be made.
+The tester will send different requests (test cases) to your server and compare the response it receives with the expected outcome string. There are three stages of comparison. As soon as a comparison for a test case succeeds, no further comparisons for this test case will be made.</br>
 In the first stage the tester checks for an exact match between the response body and the expected result. On success the tester shows "OK".
 If it is not an exact match the expected result string gets interpreted as status code (if possible) and gets checked against the response's status code. On success the tester shows "OK status code: " followed by the status code.
 For the last stage of comparison the response body is checked for an occurrence of the "expected outcome string". If it is found the tester shows "OK found: " followed by the found string. This comparison is very unexact, therefore the "expected output string" should be as special as possible to lower the change of false positives.
@@ -219,9 +233,7 @@ Start your server with the configuration described in [Setup](#setup) and use ``
 </br></br></br>
 
 ### How to customize
-To add, remove or change test cases, edit the corresponding file within the root of the "make-42-webserv-great-again" repository, as described below. To add, remove or change the known host:port combinations for the tester, edit the file *0_hosts.cpp*.</br>
-
-Usage: ```add_host("uri-host", "port");```</br>
+To add, remove or change test cases, edit the corresponding file within the root of the "make-42-webserv-great-again" repository, as described below. To add, remove or change the known host:port combinations for the tester, edit the file *0_hosts.cpp* as follows: ```add_host("uri-host", "port");```</br>
 
 #### Modify custom tests
 Edit the file *1_custom.cpp* as follows: ```custom_test("HTTP request", "expected resonse body or status code", FILE_LINE);```</br>
