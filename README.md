@@ -54,7 +54,7 @@ Select the method, enter a url and add a request body and / or header fields (no
 </br>
 ![grafik](https://user-images.githubusercontent.com/80413516/197331792-dd889fcc-e51d-44cf-81a3-db36ee3c8d69.png)
 
-After the request got received, the status code is shown and you can check out it's header fileds and body.</br>
+After the request got received, the status code is shown and you can check out its header fileds and body.</br>
 </br>
 ![grafik](https://user-images.githubusercontent.com/80413516/197331868-0a69847f-4c2d-440d-8ab9-4a79c1e1262d.png)
 
@@ -96,7 +96,7 @@ Click on install -> aggree -> done and then use ```brew install siege``` again.
 ###### <p align="right">Previous: [How to perform a stress test](#how-to-perform-a-stress-test)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
 The automated tester is kind of a beta version (private tester made public) and lacks a lot of testing and errorhandling, but I guess it can be usefull anyway. Because some tests depend on the implementation of the server it is also possible that the behaviour of your server might be correct although the tester marks it as wrong or vice versa.</br>
 </br>
-The tester will send different requests (test cases) to your server and compare the response it receives with the expected outcome string. There are three stages of comparison. As soon as a comparison for a test case succeeds, no further comparisons for this test case will be made.</br>
+The tester will send different requests (test cases) to your server and compare the response it receives (for the custom tests it is the entire response, for the others it's only the response body) with the "expected outcome string". There are three stages of comparison. As soon as a comparison for a test case succeeds, no further comparisons for this test case will be made.</br>
 In the first stage the tester checks for an exact match between the response body and the expected result. On success the tester shows "OK".
 If it is not an exact match the expected result string gets interpreted as status code (if possible) and gets checked against the response's status code. On success the tester shows "OK status code: " followed by the status code.
 For the last stage of comparison the response body is checked for an occurrence of the "expected outcome string". If it is found the tester shows "OK found: " followed by the found string. This comparison is very unexact, therefore the "expected output string" should be as special as possible to lower the change of false positives.
