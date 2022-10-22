@@ -35,8 +35,13 @@ void custom_test(const std::string& request, const std::string& expected, const 
 	}
 	send(sock, request.c_str(), request.length(), 0);
 	valread = read(sock, readBuffer, BUFFER_SIZE - 1);
-	response = readBuffer;
 	std::cout << YELLOW << "Test " << i << ": " << request.substr(0, request.find_first_of('\n') - 1) << RESET << " located in: " << BLUE << testLocation << RESET << std::endl;
+	if (valread < 0)
+	{
+		std::cout << "Error: read from socket  failed" << std::endl;
+		return ;
+	}
+	response = readBuffer;
 	evaluate_test(response, expected);
 	i++;
 }
