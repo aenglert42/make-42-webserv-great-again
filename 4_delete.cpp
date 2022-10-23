@@ -2,7 +2,7 @@
 
 void run_DELETE_tests(void)
 {
-	// Usage: DELETE_test("url", "expected resonse body or status code", FILE_LINE);
+	// Usage: DELETE_test("url", "expected resonse or status code", FILE_LINE);
 	DELETE_test("http://webserv/uploads/new.txt", "204", FILE_LINE);
 	DELETE_test("http://webserv/uploads/file.cgi.not", "204", FILE_LINE);
 	DELETE_test("http://webserv/uploads/.cgi", "204", FILE_LINE);

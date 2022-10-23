@@ -2,7 +2,7 @@
 
 void run_GET_tests(void)
 {
-	// Usage: GET_test("url", "expected resonse body or status code", FILE_LINE);
+	// Usage: GET_test("url", "expected resonse or status code", FILE_LINE);
 	GET_test("http://webserv/", "content of index.html in ./server/root/", FILE_LINE);
 	GET_test("http://webserv:80/", "content of index.html in ./server/root/", FILE_LINE);
 	GET_test("http://webserv/route/one/", "content of custom.html in ./server/root/dir/one/", FILE_LINE);

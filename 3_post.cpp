@@ -2,7 +2,7 @@
 
 void run_POST_tests(void)
 {
-	// Usage: POST_test("url", "expected resonse body or status code", FILE_LINE);
+	// Usage: POST_test("url", "expected resonse or status code", FILE_LINE);
 	POST_test("http://webserv/uploads/new.txt", "201", FILE_LINE);
 	POST_test("http://server2:8080/new.txt", "405", FILE_LINE);
 	POST_test("http://webserv/uploads/new.txt", "201", FILE_LINE);
