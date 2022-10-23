@@ -5,7 +5,7 @@ uint16_t g_port_for_custom_requests = 80;
 
 void run_custom_tests(void)
 {
-	// Usage: custom_test("HTTP request", "expected resonse body or status code", FILE_LINE);
+	// Usage: custom_test("HTTP request", "expected resonse or status code", FILE_LINE);
 	custom_test("GET / HTTP/1.1\r\nHost: webserv\r\n\r\n", "content of index.html in ./server/root/", FILE_LINE); // all good
 	custom_test("\n", "400", FILE_LINE); // bad request
 	custom_test(" ", "400", FILE_LINE); // bad request
