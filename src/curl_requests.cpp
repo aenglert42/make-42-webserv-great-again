@@ -85,10 +85,7 @@ void create_curl_host_list(void)
 	for (it = g_host_set.begin(); it != g_host_set.end(); ++it)
 	{
 		std::string str = (*it).first + ":" + (*it).second + ":" + "127.0.0.1";
-		if (g_curl_host_list == NULL)
-			g_curl_host_list = curl_slist_append(NULL, str.c_str());
-		else
-			curl_slist_append(g_curl_host_list, str.c_str());
+		g_curl_host_list = curl_slist_append(g_curl_host_list, str.c_str());
 	}
 }
 
