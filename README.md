@@ -19,7 +19,7 @@ A guide on how to manually test your "42 Coding School" project "webserv" (Octob
 
 ## How to manually send a specific HTTP request
 ###### <p align="right">Next: [How to perform a stress test](#how-to-perform-a-stress-test)&emsp;&emsp;[[Contents](#table-of-contents)]</p>
-There are many tools taht you can use to send specific HTTp requests to test how your server responds. To name some of them there are curl, netcat and postman which are all available on the schools iMacs.</br>
+There are many tools that you can use to send specific HTTP requests to test how your server responds. To name some of them there are curl, netcat and postman which are all available on the schools iMacs.</br>
 </br>
 ### Curl
 Curl is a command-line utility for transferring data from or to a server.</br>
@@ -244,7 +244,7 @@ The default port for the custom requests is port 80. Make sure your server is li
 Edit the file *2_get.cpp* as follows: ```GET_test("url", "expected resonse body or status code", FILE_LINE);```</br>
 
 #### Modify POST request tests
-Edit the file *3_post.cpp* as follows: ```POST_test("url", "expected resonse body or status code", FILE_LINE);```</br>
+Edit the file *3_post.cpp* as follows: ```POST_test("url", "expected resonse body or status code", FILE_LINE);```</br>The request body will always be: "This is my POST body with length of 39."</br>
 
 #### Modify DELETE request tests
 Edit the file *4_delete.cpp* as follows: ```DELETE_test("url", "expected resonse body or status code", FILE_LINE);```
