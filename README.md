@@ -234,17 +234,21 @@ Start your server with the configuration described in [Setup](#setup) and use ``
 
 ### How to customize
 To add, remove or change test cases, edit the corresponding file within the root of the "make-42-webserv-great-again" repository, as described below. To add, remove or change the known host:port combinations for the tester, edit the file *0_hosts.cpp* as follows: ```add_host("uri-host", "port");```</br>
+</br>
 
 #### Modify custom tests
-Edit the file *1_custom.cpp* as follows: ```custom_test("HTTP request", "expected resonse body or status code", FILE_LINE);```</br>
+For the custom tests a simple client is used to send a request. You can for example use it to send invalid requests or requests with certain (invalid) header fields. Edit the file *1_custom.cpp* as follows: ```custom_test("HTTP request", "expected resonse or status code", FILE_LINE);```</br>
 
-The default port for the custom requests is port 80. Make sure your server is listening on it, or change it by edit ```uint16_t g_port_for_custom_requests = 80;```</br>
+The default port for the custom requests is port 80. Make sure your server is listening on it, or change it by editing ```uint16_t g_port_for_custom_requests = 80;```</br>
+</br>
 
 #### Modify GET request tests
-Edit the file *2_get.cpp* as follows: ```GET_test("url", "expected resonse body or status code", FILE_LINE);```</br>
+For the GET request tests the libcurl API is used to send a GET request to the url of your choice. Header fields get added automatically. Edit the file *2_get.cpp* as follows: ```GET_test("url", "expected resonse body or status code", FILE_LINE);```</br>
+</br>
 
 #### Modify POST request tests
-Edit the file *3_post.cpp* as follows: ```POST_test("url", "expected resonse body or status code", FILE_LINE);```</br>The request body will always be: "This is my POST body with length of 39."</br>
+For the POST request tests the libcurl API is used to send a POST request with the body: "This is my POST body with length of 39.", to the url of your choice. Header fields get added automatically. Edit the file *3_post.cpp* as follows: ```POST_test("url", "expected resonse body or status code", FILE_LINE);```</br>
+</br>
 
 #### Modify DELETE request tests
-Edit the file *4_delete.cpp* as follows: ```DELETE_test("url", "expected resonse body or status code", FILE_LINE);```
+For the DELETE request tests the libcurl API is used to send a DELETE request to the url of your choice. Header fields get added automatically. Edit the file *4_delete.cpp* as follows: ```DELETE_test("url", "expected resonse body or status code", FILE_LINE);```
