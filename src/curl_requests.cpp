@@ -12,6 +12,7 @@ static void setup_get(CURL *curl, std::string *response, const std::string& url)
 	curl_easy_setopt(curl, CURLOPT_RESOLVE, g_curl_host_list);
 	curl_easy_setopt(curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
 	curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+	curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
 	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, response);
 }
